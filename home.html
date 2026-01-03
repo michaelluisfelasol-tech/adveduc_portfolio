@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — Adv Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="color-scheme" content="light">
+</head>
+<body>
+
+  <div class="cover" id="coverContainer">
+    <img src="images/certificate.jpg" alt="Cover Photo" style="cursor: pointer;">
+  </div>
+
+  <div id="imageModal" class="image-modal hidden">
+    <button id="closeImage" class="close-btn">×</button>
+    <img id="modalImage" src="" alt="Full size image">
+  </div>
+
+  <div class="profile-header container">
+    <img class="avatar" src="images/profile_pic.jpg" alt="Profile picture">
+    <div class="profile-meta">
+      <h1 class="profile-name">Felasol, Michael Luis</h1>
+      <p class="profile-sub">Student of Holy Cross of Davao College • Lives in Davao City</p>
+      <div class="profile-actions">
+      </div>
+    </div>
+  </div>
+
+  <nav class="profile-nav">
+    <div class="container">
+      <ul>
+        <li class="active">Timeline</li>
+        <li><a href="photos.html" style="color: inherit; text-decoration: none;">Photos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container content">
+    <aside class="left-col">
+      <section class="card intro">
+        <h3>Bio</h3>
+        <p>This is my protfolio from our educational tour, Cebu-Bohol.</p>
+      </section>
+
+      <section class="card photos">
+        <h3>Photos</h3>
+        <div class="photos-grid">
+          <img src="images/journal/journal (1).png" alt="Journal 1">
+          <img src="images/journal/journal (2).png" alt="Journal 2">
+          <img src="images/journal/journal (3).png" alt="Journal 3">
+          <img src="images/journal/journal (4).png" alt="Journal 4">
+          <img src="images/journal/journal (5).png" alt="Journal 5">
+        </div>
+      </section>
+
+      <div class="card">
+        <h3>Evaluation</h3>
+        <img src="images/evaluation.jpg" alt="Evaluation" style="width: 100%; height: auto;">
+      </div>
+    </aside>
+
+    <section class="main-col">
+      <div class="card post">
+        <div class="post-header">
+          <img class="post-avatar" src="images/profile_pic.jpg" alt="avatar">
+          <div>
+            <strong>Felasol, Michael Luis</strong>
+            <div class="muted">Day 1 | Journal</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <img class="post-image" src="images/journal/journal (1).png" alt="post image">
+        </div>
+      </div>
+
+      <div class="card post">
+        <div class="post-header">
+          <img class="post-avatar" src="images/profile_pic.jpg" alt="avatar">
+          <div>
+            <strong>Felasol, Michael Luis</strong>
+            <div class="muted">Day 2 | Journal</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <img class="post-image" src="images/journal/journal (2).png" alt="post image">
+        </div>
+      </div>
+      
+      <div class="card post">
+        <div class="post-header">
+          <img class="post-avatar" src="images/profile_pic.jpg" alt="avatar">
+          <div>
+            <strong>Felasol, Michael Luis</strong>
+            <div class="muted">Day 2 | Journal</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <img class="post-image" src="images/journal/journal (3).png" alt="post image">
+        </div>
+      </div>
+
+      <div class="card post">
+        <div class="post-header">
+          <img class="post-avatar" src="images/profile_pic.jpg" alt="avatar">
+          <div>
+            <strong>Felasol, Michael Luis</strong>
+            <div class="muted">Day 3 | Journal</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <img class="post-image" src="images/journal/journal (4).png" alt="post image">
+        </div>
+      </div>
+
+      <div class="card post">
+        <div class="post-header">
+          <img class="post-avatar" src="images/profile_pic.jpg" alt="avatar">
+          <div>
+            <strong>Felasol, Michael Luis</strong>
+            <div class="muted">Day 4 | Journal</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <img class="post-image" src="images/journal/journal (5).png" alt="post image">
+        </div>
+      </div>
+
+
+  
+    </section>
+  </main>
+
+  <footer class="container footer muted">© 2025 Michael Luis G. Felasol Portfolio All rights reserved.</footer>
+
+  <script>
+    const images = document.querySelectorAll('img');
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeImageBtn = document.getElementById('closeImage');
+
+    images.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function(e) {
+        e.preventDefault();
+        modalImage.src = this.src;
+        imageModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    closeImageBtn.addEventListener('click', function() {
+      imageModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+
+    imageModal.addEventListener('click', function(e) {
+      if (e.target === imageModal) {
+        imageModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+    const params = new URLSearchParams(window.location.search);
+    const imageParam = params.get('image');
+    if (imageParam) {
+      modalImage.src = decodeURIComponent(imageParam);
+      imageModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+  </script>
+</body>
+</html>
