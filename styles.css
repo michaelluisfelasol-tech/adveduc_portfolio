@@ -12,6 +12,38 @@ body {
   background: #f0f2f5;
 }
 
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -29,6 +61,12 @@ body {
   height: 100%;
   display: block;
   object-fit: contain;
+  animation: fadeIn 0.8s ease-out;
+  transition: transform 0.3s ease;
+}
+
+.cover img:hover {
+  transform: scale(1.02);
 }
 
 .image-modal {
@@ -42,6 +80,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 999;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .image-modal.hidden {
@@ -69,6 +108,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.15);
+  opacity: 0.8;
 }
 
 .profile-header {
@@ -77,6 +122,7 @@ body {
   gap: 20px;
   padding: 18px 0;
   position: relative;
+  animation: slideUpFadeIn 0.8s ease-out;
 }
 
 .profile-header .avatar {
@@ -87,10 +133,17 @@ body {
   margin-top: -90px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-header .avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .profile-meta {
   padding-bottom: 14px;
+  animation: slideInFromLeft 0.8s ease-out 0.1s both;
 }
 
 .profile-name {
@@ -140,12 +193,17 @@ body {
   padding: 8px 12px;
   cursor: pointer;
   color: #333;
+  transition: all 0.3s ease;
 }
 
 .profile-nav li.active {
   border-bottom: 3px solid #1877f2;
   color: #1877f2;
   font-weight: 600;
+}
+
+.profile-nav li:hover {
+  color: #1877f2;
 }
 
 /* Layout */
@@ -168,6 +226,14 @@ body {
   border-radius: 8px;
   padding: 12px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  animation: slideUpFadeIn 0.6s ease-out;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.left-col .card:hover,
+.main-col .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 .card h3 {
@@ -186,6 +252,13 @@ body {
   height: 100px;
   object-fit: cover;
   border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.photos-grid img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Posts */
@@ -271,12 +344,13 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: slideUpFadeIn 0.6s ease-out;
 }
 
 .photo-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .photo-card img {
@@ -284,6 +358,11 @@ body {
   height: 250px;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.05);
 }
 
 .photo-caption {
@@ -313,7 +392,13 @@ body {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  animation: slideUpFadeIn 0.6s ease-out;
+}
+
+.photo-folder:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
 }
 
 .folder-header {
@@ -322,7 +407,7 @@ body {
   align-items: center;
   padding: 16px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.3s ease;
 }
 
 .folder-header:hover {
@@ -373,11 +458,13 @@ body {
   object-fit: cover;
   border-radius: 4px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .gallery-grid img:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Image Modal */
